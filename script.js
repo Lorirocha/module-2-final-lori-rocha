@@ -1,30 +1,32 @@
-const musicContanier = document.querySelector('.music-container')
+const musicContainer = document.querySelector('.music-container')
 const playBtn = document.querySelector('#play')
 const prevBtn = document.querySelector('#prev')
 const nextBtn = document.querySelector('#next')
-const audio = document.querySelector('.progress')
+const audio = document.querySelector('#audio')
 const title = document.querySelector('#title')
 const cover = document.querySelector('#cover')
+const progressContainer = document.querySelector('#progress-container')
+
 
 // song titles
-const songs = ['Lofi', 'Senses', 'Ambientalist']
+const songs = ['(FREE) Chill Lofi Hip Hop Beat - Another Day (prod. AHOAMI)', 'Nomyn - Senses.mp3', 'The Ambientalist - Changes.mp3']
 
 // keep track
 
 let songIndex = 2
 
 // load song info DOM
-loadsong(songs[songIndex])
+loadSong(songs[songIndex])
 
 // song details
-function loadsong(song){
+function loadSong(song){
     title.innerText = song
     audio.src = `music/${song}.mp3`
     cover.src = `images/${song}.jpg`
 }
 
 function playSong() {
-    musicContanier.classList.add('play')
+    musicContainer.classList.add('play')
     playBtn.querySelector('i.fas').classList.remove('fa-play')
     playBtn.querySelector('i.fas').classList.add('fa-pause')
 
@@ -32,7 +34,7 @@ function playSong() {
 }
 
 function pauseSong() {
-    musicContanier.classList.add('play')
+    musicContainer.classList.remove('play')
     playBtn.querySelector('i.fas').classList.add('fa-play')
     playBtn.querySelector('i.fas').classList.remove('fa-pause')
 
@@ -68,7 +70,7 @@ function prevSong() {
   function updateProgress(e){
     const {duration,currentTime} = e.srcElement
     const progressPercent = (currentTime / duration) * 100
-    progressPercent.style.width = `${progressPercent}%`
+    progressContainer.style.width = `${progressPercent}%`
   }
 
 
@@ -82,7 +84,7 @@ function prevSong() {
 
 // event listeners
 playBtn.addEventListener('click', () => {
-    const isPlaying = musicContanier.classList.classList.contains('play')
+    const isPlaying = musicContainer.classList.contains('play')
      
     if(isPlaying) {
         pauseSong()
