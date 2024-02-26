@@ -9,7 +9,7 @@ const progressContainer = document.querySelector('#progress-container')
 
 
 // song titles
-const songs = ['(FREE) Chill Lofi Hip Hop Beat - Another Day (prod. AHOAMI)', 'Nomyn - Senses.mp3', 'The Ambientalist - Changes.mp3']
+const songs = ['(FREE) Chill Lofi Hip Hop Beat - Another Day (prod. AHOAMI)', 'Nomyn - Senses', 'The Ambientalist - Changes']
 
 // keep track
 
@@ -22,7 +22,7 @@ loadSong(songs[songIndex])
 function loadSong(song){
     title.innerText = song
     audio.src = `music/${song}.mp3`
-    cover.src = `images/${song}.jpg`
+   
 }
 
 function playSong() {
